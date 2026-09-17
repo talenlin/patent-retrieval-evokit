@@ -34,6 +34,21 @@ py build_plugin_package.py
 
 构建结果位于 `dist/`，并同时生成 `.sha256` 校验文件。跨电脑安装、工具映射和宿主改造请从 [中文快速入门](docs/QUICKSTART.zh-CN.md) 开始；若交给另一台电脑上的 Agent 执行，可直接使用 [启动 Prompt](docs/AGENT-START-PROMPT.zh-CN.md)。
 
+## 如何使用 GUIDANCE_SPEC
+
+[`GUIDANCE_SPEC.md`](GUIDANCE_SPEC.md) 是安装和改造过程的正式执行规范，不是需要逐条复制到宿主 Skill 的模板。根据你的任务选择对应部分：
+
+| 使用场景 | 建议阅读内容 | 执行方式 |
+|---|---|---|
+| 第一次在本机安装 | 第 1～5、10 节 | 先验证 ZIP 和 SHA-256，再初始化独立经验库并完成本机工具映射 |
+| 给已有专利检索 Skill 增加记忆 | 第 6、10 节 | 先做 Skill 完整性检查和集成 dry-run，人工确认差异后才使用 `--apply` |
+| 交给另一台电脑上的 Agent | 第 3～6、10、12 节 | 同时提供 ZIP、`.sha256`、宿主 Skills 路径和独立经验库路径；可直接复制第 12 节启动指令 |
+| 继续改进插件本身 | 第 7～11、13 节 | 按阶段门禁、不可破坏约束和交付报告模板执行，并重新完成全量验收 |
+
+普通用户如果只想完成一次安装，可先按[中文快速入门](docs/QUICKSTART.zh-CN.md)操作；遇到跨电脑迁移、工具命名空间、宿主改造、回滚或验收问题时，再以 `GUIDANCE_SPEC.md` 为准。不要把其他电脑的 `tools.local.json` 或 `runtime-tools.json` 当作 SPEC 的一部分复制过去。
+
+如果由 Agent 执行，推荐把[启动 Prompt](docs/AGENT-START-PROMPT.zh-CN.md)与 `GUIDANCE_SPEC.md` 一并提供，并要求 Agent 在任何 `--apply` 之前先汇报候选 Skill、工具映射校验结果、拟修改差异和回滚位置。
+
 ## 核心边界
 
 1. 插件只依赖抽象能力，例如“专利检索”“专利详情”；具体 `(server, tool)` 必须从目标机器的真实工具目录映射。
