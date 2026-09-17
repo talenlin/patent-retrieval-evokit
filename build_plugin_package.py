@@ -15,6 +15,7 @@ ROOT = pathlib.Path(__file__).resolve().parent
 TEMPLATE = ROOT / "plugin" / "retrieve-experience-v2"
 NAME = "retrieve-experience-v2"
 VERSION = "1.0.0"
+ARCHIVE_BASENAME = "patent-retrieval-evokit"
 
 
 def sha256(path: pathlib.Path) -> str:
@@ -28,8 +29,8 @@ def sha256(path: pathlib.Path) -> str:
 def main() -> int:
     dist = ROOT / "dist"
     dist.mkdir(exist_ok=True)
-    zip_path = dist / f"{NAME}-{VERSION}.zip"
-    checksum_path = dist / f"{NAME}-{VERSION}.zip.sha256"
+    zip_path = dist / f"{ARCHIVE_BASENAME}-v{VERSION}.zip"
+    checksum_path = dist / f"{ARCHIVE_BASENAME}-v{VERSION}.zip.sha256"
 
     with tempfile.TemporaryDirectory(prefix="retrieve-experience-build-") as tmp:
         stage = pathlib.Path(tmp) / NAME

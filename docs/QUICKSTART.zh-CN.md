@@ -9,7 +9,7 @@ py -m unittest discover -s tests -v
 py -m unittest discover -s plugin/retrieve-experience-v2/tests -v
 py scripts/public_release_check.py --root .
 py build_plugin_package.py
-Get-FileHash .\dist\retrieve-experience-v2-1.0.0.zip -Algorithm SHA256
+Get-FileHash .\dist\patent-retrieval-evokit-v1.0.0.zip -Algorithm SHA256
 ```
 
 将 ZIP 解压到独立临时目录后，再运行包内 `scripts/verify_package.py`。不要直接把开发仓库当作用户经验库。

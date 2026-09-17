@@ -57,8 +57,8 @@ Retrieve Experience 插件 ── expctl.py ── 独立私有经验库
 不要直接覆盖已有插件。先把 ZIP 解压到临时目录，并执行：
 
 ```powershell
-Get-FileHash .\retrieve-experience-v2-1.0.0.zip -Algorithm SHA256
-Expand-Archive .\retrieve-experience-v2-1.0.0.zip .\staging
+Get-FileHash .\patent-retrieval-evokit-v1.0.0.zip -Algorithm SHA256
+Expand-Archive .\patent-retrieval-evokit-v1.0.0.zip .\staging
 cd .\staging\retrieve-experience-v2
 py scripts\verify_package.py .
 py -m unittest discover -s tests -v
