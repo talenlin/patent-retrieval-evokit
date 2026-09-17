@@ -1,0 +1,26 @@
+{
+  "name": "retrieve-experience-v2",
+  "version": "2.3.0",
+  "description": "Companion memory hooks for evidence-backed patent-search skills.",
+  "author": {
+    "name": "talenlin",
+    "url": "https://github.com/talenlin"
+  },
+  "homepage": "https://github.com/talenlin/patent-retrieval-evokit",
+  "repository": "https://github.com/talenlin/patent-retrieval-evokit.git",
+  "keywords": ["patent-search", "retrieval-memory", "experience", "audit"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Patent Search Memory Hooks",
+    "shortDescription": "Add auditable memory hooks to existing patent-search skills.",
+    "longDescription": "A backend-neutral companion plugin that lets existing patent-search skills prefetch, validate, and evolve reusable retrieval experience without replacing their search logic.",
+    "developerName": "talenlin",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "defaultPrompt": [
+      "Add memory hooks to one of my patent-search skills.",
+      "Use retrieval memory during this patent search.",
+      "Review rejected retrieval experience before the next search."
+    ]
+  }
+}

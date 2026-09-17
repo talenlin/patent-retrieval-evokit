@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+dist/
+.ci-extract/
+
+# Machine-local capability adapters. Rebuild them on every computer.
+tools.local.json
+runtime-tools.json
+
+# Runtime evidence and private experience libraries never belong in this repo.
+case-run*.json
+run-*.json
+*.lock

@@ -1,0 +1,7 @@
+interface:
+  display_name: "专利检索记忆插件 v2"
+  short_description: "为已有专利检索技能增加可审计的动态记忆 Hook"
+  default_prompt: "Use $retrieve-experience-v2 as a companion memory layer for my active patent-search skill."
+
+policy:
+  allow_implicit_invocation: true
