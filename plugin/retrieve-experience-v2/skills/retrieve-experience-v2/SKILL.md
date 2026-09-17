@@ -2,7 +2,7 @@
 name: retrieve-experience-v2
 description: Companion memory layer for existing patent-search skills. Use when a host patent-search skill declares Retrieve Experience hooks, when adding those hooks to a patent-search skill, or when prefetching and validating reusable patent-retrieval experience; do not use as a patent-search backend or for general research.
 metadata:
-  version: "2.3.0"
+  version: "1.0.0"
 ---
 
 # Retrieve Experience v2

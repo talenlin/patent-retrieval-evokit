@@ -1,7 +1,7 @@
 # Retrieve Experience v2 动态插件跨电脑指导 SPEC
 
 **SPEC 版本**：1.0
-**目标插件**：`retrieve-experience-v2` 2.3.0
+**目标插件**：`retrieve-experience-v2` 1.0.0
 **目标读者**：另一台电脑上的 Codex 或具备文件、Python、Git 操作能力的开发 Agent
 
 ## 1. 产品定位
@@ -57,8 +57,8 @@ Retrieve Experience 插件 ── expctl.py ── 独立私有经验库
 不要直接覆盖已有插件。先把 ZIP 解压到临时目录，并执行：
 
 ```powershell
-Get-FileHash .\retrieve-experience-v2-2.3.0.zip -Algorithm SHA256
-Expand-Archive .\retrieve-experience-v2-2.3.0.zip .\staging
+Get-FileHash .\retrieve-experience-v2-1.0.0.zip -Algorithm SHA256
+Expand-Archive .\retrieve-experience-v2-1.0.0.zip .\staging
 cd .\staging\retrieve-experience-v2
 py scripts\verify_package.py .
 py -m unittest discover -s tests -v

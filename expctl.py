@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""expctl — 专利检索自进化库的维护工具（可移植版 v2.3）
+"""expctl — 专利检索自进化库的维护工具（公开版 v1.0）
 
 配套文档：专利检索自进化库-SPEC.md
 设计约束：**仅用 Python 标准库**，零 pip 依赖，可在 Windows / macOS / Linux 直接运行。
@@ -50,7 +50,7 @@ def _configure_stdio() -> None:
 _configure_stdio()
 
 TODAY = _dt.date.today().isoformat()
-VER = "2.3.0"
+VER = "1.0.0"
 
 # ============================================================ 路径解析
 # 优先级：--file 显式指定 > 环境变量 > 脚本旁的 检索经验库/ > 当前目录

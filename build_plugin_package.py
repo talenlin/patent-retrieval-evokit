@@ -14,7 +14,7 @@ import zipfile
 ROOT = pathlib.Path(__file__).resolve().parent
 TEMPLATE = ROOT / "plugin" / "retrieve-experience-v2"
 NAME = "retrieve-experience-v2"
-VERSION = "2.3.0"
+VERSION = "1.0.0"
 
 
 def sha256(path: pathlib.Path) -> str:

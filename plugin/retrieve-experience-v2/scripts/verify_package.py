@@ -37,7 +37,7 @@ def main() -> int:
     for path in root.rglob("*"):
         if any(part in FORBIDDEN_PARTS for part in path.relative_to(root).parts):
             problems.append(f"forbidden path: {path.relative_to(root)}")
-    if manifest.get("name") != "retrieve-experience-v2" or manifest.get("version") != "2.3.0":
+    if manifest.get("name") != "retrieve-experience-v2" or manifest.get("version") != "1.0.0":
         problems.append("manifest identity/version mismatch")
     if problems:
         print("package verification failed")
