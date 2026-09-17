@@ -1,12 +1,12 @@
-# Retrieve Experience v2 动态插件跨电脑指导 SPEC
+# Patent Retrieval EvoKit 动态插件跨电脑指导 SPEC
 
 **SPEC 版本**：1.0
-**目标插件**：`retrieve-experience-v2` 1.0.0
+**目标插件**：`patent-retrieval-evokit` 1.0.0
 **目标读者**：另一台电脑上的 Codex 或具备文件、Python、Git 操作能力的开发 Agent
 
 ## 1. 产品定位
 
-Retrieve Experience v2 不是专利检索 Skill，也不提供检索后端。它是一个伴随式 Module，为任意已有专利检索 Skill 增加三类动态记忆 Hook：
+Patent Retrieval EvoKit 不是专利检索 Skill，也不提供检索后端。它是一个伴随式 Module，为任意已有专利检索 Skill 增加三类动态记忆 Hook：
 
 1. 检索前按领域预取历史经验；
 2. 检索过程中记录哪些经验实际改变了检索，并验证结果；
@@ -25,7 +25,7 @@ Retrieve Experience v2 不是专利检索 Skill，也不提供检索后端。它
        └─ Hook C：add / validate / finish-run
                        │
                        ▼
-Retrieve Experience 插件 ── expctl.py ── 独立私有经验库
+Patent Retrieval EvoKit 插件 ── expctl.py ── 独立私有经验库
 ```
 
 - 宿主与插件的 Interface 是三个 Hook，不是复制整份 Skill。
@@ -35,13 +35,13 @@ Retrieve Experience 插件 ── expctl.py ── 独立私有经验库
 
 ## 3. 包内契约
 
-解压后的顶层目录必须是 `retrieve-experience-v2/`，并包含：
+解压后的顶层目录必须是 `patent-retrieval-evokit/`，并包含：
 
 | 路径 | 作用 |
 |---|---|
 | `.codex-plugin/plugin.json` | 插件清单 |
-| `skills/retrieve-experience-v2/SKILL.md` | 运行时 Hook 协议 |
-| `skills/retrieve-experience-v2/references/HOST-INTEGRATION.md` | 宿主最小接入块和验收条件 |
+| `skills/patent-retrieval-evokit/SKILL.md` | 运行时 Hook 协议 |
+| `skills/patent-retrieval-evokit/references/HOST-INTEGRATION.md` | 宿主最小接入块和验收条件 |
 | `scripts/expctl.py` | 经验库维护工具 |
 | `scripts/integrate_host_skill.py` | 宿主接入的 dry-run/幂等追加工具 |
 | `scripts/verify_package.py` | 解包完整性校验 |
@@ -59,17 +59,17 @@ Retrieve Experience 插件 ── expctl.py ── 独立私有经验库
 ```powershell
 Get-FileHash .\patent-retrieval-evokit-v1.0.0.zip -Algorithm SHA256
 Expand-Archive .\patent-retrieval-evokit-v1.0.0.zip .\staging
-cd .\staging\retrieve-experience-v2
+cd .\staging\patent-retrieval-evokit
 py scripts\verify_package.py .
 py -m unittest discover -s tests -v
 py scripts\expctl.py --help
 ```
 
-验收条件：哈希与同目录 `.sha256` 文件一致；包校验通过；全部测试通过；帮助信息显示 v2 命令。失败时先保留输出并诊断，不得删除测试或放宽断言来制造通过。
+验收条件：哈希与同目录 `.sha256` 文件一致；包校验通过；全部测试通过；帮助信息显示 v1.0.0。失败时先保留输出并诊断，不得删除测试或放宽断言来制造通过。
 
 ## 5. 安装与经验库连接
 
-按目标 Codex/Agent 的插件安装机制安装整个插件目录。若平台不支持插件清单，也可只安装 `skills/retrieve-experience-v2/`，但必须保持它能解析到 `scripts/expctl.py`，否则需要记录平台专用 Adapter。
+按目标 Codex/Agent 的插件安装机制安装整个插件目录。若平台不支持插件清单，也可只安装 `skills/patent-retrieval-evokit/`，但必须保持它能解析到 `scripts/expctl.py`，否则需要记录平台专用 Adapter。
 
 经验库单独初始化：
 
@@ -206,7 +206,7 @@ py <plugin-root>\scripts\integrate_host_skill.py --skill "<host-skill>\SKILL.md"
 ## 12. 给另一台电脑上 Agent 的启动指令
 
 ```text
-请先阅读插件包内 docs/GUIDANCE_SPEC.md、skills/retrieve-experience-v2/SKILL.md、
+请先阅读插件包内 docs/GUIDANCE_SPEC.md、skills/patent-retrieval-evokit/SKILL.md、
 HOST-INTEGRATION.md 和 RUN-ACCOUNTING.md。不要立即修改代码或任何宿主 Skill。
 
 先校验 ZIP SHA-256 和 PACKAGE_MANIFEST.json，在临时目录全新解压并运行全部测试，

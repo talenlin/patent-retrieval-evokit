@@ -41,8 +41,8 @@ class IntegrateHostSkillTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         updated = self.skill.read_text(encoding="utf-8")
         self.assertTrue(updated.startswith(self.original.rstrip()))
-        self.assertEqual(updated.count("retrieve-experience-v2:begin"), 1)
-        backups = list((self.skill_dir / ".retrieve-experience-backups").glob("*-SKILL.md"))
+        self.assertEqual(updated.count("patent-retrieval-evokit:begin"), 1)
+        backups = list((self.skill_dir / ".patent-retrieval-evokit-backups").glob("*-SKILL.md"))
         self.assertEqual(len(backups), 1)
         self.assertEqual(backups[0].read_text(encoding="utf-8"), self.original)
 
@@ -52,7 +52,7 @@ class IntegrateHostSkillTests(unittest.TestCase):
         self.assertEqual(self.skill.read_text(encoding="utf-8"), updated)
 
     def test_partial_marker_is_rejected(self) -> None:
-        self.skill.write_text(self.original + "\n<!-- retrieve-experience-v2:begin -->\n", encoding="utf-8")
+        self.skill.write_text(self.original + "\n<!-- patent-retrieval-evokit:begin -->\n", encoding="utf-8")
         result = self.run_cli("--apply")
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("only one integration marker", result.stderr)
@@ -71,7 +71,7 @@ class IntegrateHostSkillTests(unittest.TestCase):
 
         self.assertEqual(result.returncode, 2)
         self.assertIn("belongs to ['server_b']", result.stdout)
-        self.assertNotIn("retrieve-experience-v2:begin", self.skill.read_text(encoding="utf-8"))
+        self.assertNotIn("patent-retrieval-evokit:begin", self.skill.read_text(encoding="utf-8"))
 
     def test_json_dry_run_reports_invisible_instruction_without_writing(self) -> None:
         self.skill.write_text(
@@ -96,7 +96,7 @@ class IntegrateHostSkillTests(unittest.TestCase):
         result = self.run_cli("--apply")
         self.assertEqual(result.returncode, 2)
         self.assertIn("FM-2", result.stdout)
-        self.assertNotIn("retrieve-experience-v2:begin", self.skill.read_text(encoding="utf-8"))
+        self.assertNotIn("patent-retrieval-evokit:begin", self.skill.read_text(encoding="utf-8"))
 
     def test_already_integrated_skill_still_reports_and_honors_blockers(self) -> None:
         first = self.run_cli("--apply")

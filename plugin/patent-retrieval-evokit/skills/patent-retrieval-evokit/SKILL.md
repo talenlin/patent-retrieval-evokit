@@ -1,11 +1,11 @@
 ---
-name: retrieve-experience-v2
-description: Companion memory layer for existing patent-search skills. Use when a host patent-search skill declares Retrieve Experience hooks, when adding those hooks to a patent-search skill, or when prefetching and validating reusable patent-retrieval experience; do not use as a patent-search backend or for general research.
+name: patent-retrieval-evokit
+description: Companion memory layer for existing patent-search skills. Use when a host patent-search skill declares Patent Retrieval EvoKit hooks, when adding those hooks to a patent-search skill, or when prefetching and validating reusable patent-retrieval experience; do not use as a patent-search backend or for general research.
 metadata:
   version: "1.0.0"
 ---
 
-# Retrieve Experience v2
+# Patent Retrieval EvoKit
 
 Act as a companion Module around the active patent-search skill. The host skill owns search strategy, backend calls, claim analysis, and deliverables. This plugin owns only reusable experience state and its audit trail.
 

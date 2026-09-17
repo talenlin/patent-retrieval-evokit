@@ -6,7 +6,7 @@
 git clone https://github.com/talenlin/patent-retrieval-evokit.git
 cd patent-retrieval-evokit
 py -m unittest discover -s tests -v
-py -m unittest discover -s plugin/retrieve-experience-v2/tests -v
+py -m unittest discover -s plugin/patent-retrieval-evokit/tests -v
 py scripts/public_release_check.py --root .
 py build_plugin_package.py
 Get-FileHash .\dist\patent-retrieval-evokit-v1.0.0.zip -Algorithm SHA256
@@ -16,7 +16,7 @@ Get-FileHash .\dist\patent-retrieval-evokit-v1.0.0.zip -Algorithm SHA256
 
 ## 2. 安装插件
 
-把 ZIP 解压到目标电脑的插件目录，确认目录根部包含 `.codex-plugin/plugin.json`。重新载入 Codex 后，应能看到 `retrieve-experience-v2` Skill。
+把 ZIP 解压到目标电脑的插件目录，确认目录根部包含 `.codex-plugin/plugin.json`。重新载入 Codex 后，应能看到 `patent-retrieval-evokit` Skill。
 
 ## 3. 初始化独立经验库
 

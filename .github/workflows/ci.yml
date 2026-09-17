@@ -17,6 +17,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: python -m unittest discover -s tests -v
-      - run: python -m unittest discover -s plugin/retrieve-experience-v2/tests -v
+      - run: python -m unittest discover -s plugin/patent-retrieval-evokit/tests -v
       - run: python scripts/public_release_check.py --root .
       - run: python build_plugin_package.py

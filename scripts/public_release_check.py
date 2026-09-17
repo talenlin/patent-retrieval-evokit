@@ -25,9 +25,11 @@ TEXT_SUFFIXES = {
 
 
 def content_rules() -> list[tuple[str, re.Pattern[str]]]:
-    old_repo = "github.com/talenlin/" + "Retrieve-experience-v2"
+    legacy_id = "retrieve-experience" + "-v2"
+    old_repo = "github.com/talenlin/" + "Retrieve-experience" + "-v2"
     private_key = "-----BEGIN " + "PRIVATE KEY-----"
     return [
+        ("legacy-public-identifier", re.compile(re.escape(legacy_id), re.IGNORECASE)),
         ("old-private-repository-url", re.compile(re.escape(old_repo), re.IGNORECASE)),
         ("windows-user-path", re.compile(r"[A-Za-z]:\\Users\\(?!<)[^\\\s]+\\", re.IGNORECASE)),
         ("unix-user-path", re.compile(r"/(?:Users|home)/(?!<)[^/\s]+/")),
@@ -51,6 +53,8 @@ def scan(root: pathlib.Path) -> list[dict[str, object]]:
     for path in iter_files(root):
         relative = path.relative_to(root).as_posix()
         lower_name = path.name.lower()
+        if "retrieve-experience" + "-v2" in relative.lower():
+            findings.append({"rule": "legacy-public-path", "path": relative, "line": None})
         runtime_artifact = (
             path.name == "检索经验.md"
             or (lower_name.startswith("case-run") and lower_name.endswith(".json"))

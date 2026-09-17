@@ -985,13 +985,13 @@ def cmd_doctor(a) -> int:
     if getattr(a, "skills_root", None):
         checker_candidates = [
             pathlib.Path(__file__).resolve().with_name("check_skill_integrity.py"),
-            pathlib.Path(__file__).resolve().parent / "plugin" / "retrieve-experience-v2" /
+            pathlib.Path(__file__).resolve().parent / "plugin" / "patent-retrieval-evokit" /
             "scripts" / "check_skill_integrity.py",
         ]
         checker = next((path for path in checker_candidates if path.exists()), None)
         if checker is None:
             raise ExpError("找不到 check_skill_integrity.py，无法执行技能架构检查")
-        spec = importlib.util.spec_from_file_location("retrieve_experience_integrity", checker)
+        spec = importlib.util.spec_from_file_location("patent_retrieval_evokit_integrity", checker)
         if spec is None or spec.loader is None:
             raise ExpError("无法加载 check_skill_integrity.py")
         module = importlib.util.module_from_spec(spec)

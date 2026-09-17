@@ -45,9 +45,20 @@ class PublicReleaseCheckTests(unittest.TestCase):
     def test_old_repository_reference_is_blocked(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = pathlib.Path(tmp)
-            old_name = "https://github.com/talenlin/" + "Retrieve-experience-v2.git"
+            old_name = "https://github.com/talenlin/" + "Retrieve-experience" + "-v2.git"
             (root / "note.md").write_text(old_name, encoding="utf-8")
             self.assertIn("old-private-repository-url", {item["rule"] for item in MODULE.scan(root)})
+
+    def test_legacy_public_identifier_and_path_are_blocked(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = pathlib.Path(tmp)
+            legacy = "retrieve-experience" + "-v2"
+            folder = root / legacy
+            folder.mkdir()
+            (folder / "note.md").write_text(f"install {legacy}\n", encoding="utf-8")
+            rules = {item["rule"] for item in MODULE.scan(root)}
+            self.assertIn("legacy-public-path", rules)
+            self.assertIn("legacy-public-identifier", rules)
 
     def test_dist_and_git_are_skipped(self):
         with tempfile.TemporaryDirectory() as tmp:

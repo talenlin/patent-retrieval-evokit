@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Safely append Retrieve Experience v2 hooks to one host SKILL.md."""
+"""Safely append Patent Retrieval EvoKit hooks to one host SKILL.md."""
 
 from __future__ import annotations
 
@@ -15,12 +15,12 @@ import shutil
 import tempfile
 
 
-BEGIN = "<!-- retrieve-experience-v2:begin -->"
-END = "<!-- retrieve-experience-v2:end -->"
+BEGIN = "<!-- patent-retrieval-evokit:begin -->"
+END = "<!-- patent-retrieval-evokit:end -->"
 BLOCK = f"""{BEGIN}
 ## Retrieval experience companion
 
-When this skill performs patent retrieval and `$retrieve-experience-v2` is available, use it as a companion memory layer without changing this skill's search logic or deliverables.
+When this skill performs patent retrieval and `$patent-retrieval-evokit` is available, use it as a companion memory layer without changing this skill's search logic or deliverables.
 
 - Before retrieval: run its Hook A with this task's actual technical domain and a case-local run artifact.
 - During query refinement: run Hook B only for experience that actually changes the search or verification path.
@@ -88,7 +88,7 @@ def namespace_blockers(text: str, catalog: dict[str, set[str]]) -> list[str]:
 
 def architecture_report(path: pathlib.Path, skills_root: pathlib.Path) -> dict:
     checker = pathlib.Path(__file__).with_name("check_skill_integrity.py")
-    spec = importlib.util.spec_from_file_location("retrieve_experience_integrity", checker)
+    spec = importlib.util.spec_from_file_location("patent_retrieval_evokit_integrity", checker)
     if spec is None or spec.loader is None:
         raise ValueError("cannot load check_skill_integrity.py")
     module = importlib.util.module_from_spec(spec)
@@ -165,7 +165,7 @@ def main() -> int:
             print("dry run only; rerun with --apply after reviewing this diff")
         return 0
 
-    backup_dir = (args.backup_dir or path.parent / ".retrieve-experience-backups").resolve()
+    backup_dir = (args.backup_dir or path.parent / ".patent-retrieval-evokit-backups").resolve()
     backup_dir.mkdir(parents=True, exist_ok=True)
     stamp = dt.datetime.now().strftime("%Y%m%d-%H%M%S-%f")
     backup = backup_dir / f"{path.parent.name}-{stamp}-SKILL.md"

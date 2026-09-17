@@ -1,6 +1,6 @@
 # Host Skill Integration
 
-Use this guide only when adding Retrieve Experience v2 to an existing patent-search skill.
+Use this guide only when adding Patent Retrieval EvoKit to an existing patent-search skill.
 
 ## Boundary
 
@@ -19,10 +19,10 @@ Degradation must be self-contained: if this companion is unavailable, continue t
 Insert the following block once, preferably after the host skill's general workflow or before its completion criteria:
 
 ```markdown
-<!-- retrieve-experience-v2:begin -->
+<!-- patent-retrieval-evokit:begin -->
 ## Retrieval experience companion
 
-When this skill performs patent retrieval and `$retrieve-experience-v2` is available, use it as a companion memory layer without changing this skill's search logic or deliverables.
+When this skill performs patent retrieval and `$patent-retrieval-evokit` is available, use it as a companion memory layer without changing this skill's search logic or deliverables.
 
 - Before retrieval: run its Hook A with this task's actual technical domain and a case-local run artifact.
 - During query refinement: run Hook B only for experience that actually changes the search or verification path.
@@ -30,7 +30,7 @@ When this skill performs patent retrieval and `$retrieve-experience-v2` is avail
 - Create the run artifact with `prefetch --out`; never save machine-readable output with shell redirection.
 - Derive all counts from `finish-run` / `verify-run`, and generate CSV/JSON through a standard writer rather than manual delimiter concatenation.
 - If the companion is unavailable, state that memory was skipped and continue this skill's original workflow.
-<!-- retrieve-experience-v2:end -->
+<!-- patent-retrieval-evokit:end -->
 ```
 
 First run `<plugin-root>/scripts/check_skill_integrity.py --skills-root <skills-root> --json`. Then use `<plugin-root>/scripts/integrate_host_skill.py --skills-root <skills-root> --catalog <runtime-tools.json> --json` for a dry-run diff, namespace check, architecture diagnostics, and idempotent append. Inspect every target before applying; capability detection is a human or Agent judgment, not a filename match. A blocker must be fixed separately before adding memory Hooks—the integration tool must not rewrite host retrieval logic.

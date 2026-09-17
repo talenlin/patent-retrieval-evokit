@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the portable Retrieve Experience v2 Codex plugin package."""
+"""Build the portable Patent Retrieval EvoKit Codex plugin package."""
 
 from __future__ import annotations
 
@@ -12,8 +12,8 @@ import zipfile
 
 
 ROOT = pathlib.Path(__file__).resolve().parent
-TEMPLATE = ROOT / "plugin" / "retrieve-experience-v2"
-NAME = "retrieve-experience-v2"
+TEMPLATE = ROOT / "plugin" / "patent-retrieval-evokit"
+NAME = "patent-retrieval-evokit"
 VERSION = "1.0.0"
 ARCHIVE_BASENAME = "patent-retrieval-evokit"
 
@@ -32,7 +32,7 @@ def main() -> int:
     zip_path = dist / f"{ARCHIVE_BASENAME}-v{VERSION}.zip"
     checksum_path = dist / f"{ARCHIVE_BASENAME}-v{VERSION}.zip.sha256"
 
-    with tempfile.TemporaryDirectory(prefix="retrieve-experience-build-") as tmp:
+    with tempfile.TemporaryDirectory(prefix="patent-retrieval-evokit-build-") as tmp:
         stage = pathlib.Path(tmp) / NAME
         shutil.copytree(
             TEMPLATE,

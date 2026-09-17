@@ -2,7 +2,7 @@
 
 一个面向专利检索 Skill 的后端无关“动态记忆插件”。它给已有检索 Skill 增加可审计的经验读取、使用标记、运行结算和知识准入能力，但不接管宿主 Skill 的检索策略、工具调用或报告结构。
 
-当前公开版本：`1.0.0`，发行包命名为 `patent-retrieval-evokit-v1.0.0.zip`。插件内部标识 `retrieve-experience-v2` 仅为兼容性名称，不代表发行包版本。
+当前公开版本：`1.0.0`。仓库、发行包、插件和 Skill 统一使用 `patent-retrieval-evokit` 名称。
 
 ## 它解决什么问题
 
@@ -28,7 +28,7 @@
 git clone https://github.com/talenlin/patent-retrieval-evokit.git
 cd patent-retrieval-evokit
 py -m unittest discover -s tests -v
-py -m unittest discover -s plugin/retrieve-experience-v2/tests -v
+py -m unittest discover -s plugin/patent-retrieval-evokit/tests -v
 py build_plugin_package.py
 ```
 
@@ -45,7 +45,7 @@ py build_plugin_package.py
 ## 仓库结构
 
 - `expctl.py`：经验库与运行生命周期命令行工具；
-- `plugin/retrieve-experience-v2/`：可安装的 Codex 插件源码；
+- `plugin/patent-retrieval-evokit/`：可安装的 Codex 插件源码；
 - `build_plugin_package.py`：生成可移植 ZIP 和 SHA-256；
 - `scripts/public_release_check.py`：公开发布脱敏门禁；
 - `tests/`：核心行为与发布门禁测试；
